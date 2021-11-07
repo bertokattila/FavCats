@@ -17,6 +17,7 @@ object HttpClient {
 
     private val randomCatApi: RandomCatApi = retrofit.create(RandomCatApi::class.java)
 
+    ///  JSON response is a list which contains a single object,  List<Cat>
     fun getCat() : Call<List<Cat>> {
         return randomCatApi.getCat(Config.API_KEY)
     }

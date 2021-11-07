@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import hu.bme.aut.bertokattila.favcats.api.HttpClient
 import hu.bme.aut.bertokattila.favcats.databinding.ActivityNewCatBinding
 import hu.bme.aut.bertokattila.favcats.models.Cat
@@ -17,7 +21,8 @@ class NewCatActivity : AppCompatActivity() {
         binding = ActivityNewCatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        loadRandomCat()
+        binding.newCatBtn.setOnClickListener {
             loadRandomCat()
         }
     }
@@ -25,15 +30,21 @@ class NewCatActivity : AppCompatActivity() {
     private fun loadRandomCat(){
         HttpClient.getCat().enqueue(object : retrofit2.Callback<List<Cat>> {
             override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
-               Log.d("valasz", response.toString() )
-                Toast.makeText(this@NewCatActivity, response.body().toString(), Toast.LENGTH_LONG).show()
+                loadImage(response.body())
             }
 
             override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
                 t.printStackTrace()
                 Toast.makeText(this@NewCatActivity, "Network request error occured, check LOG", Toast.LENGTH_LONG).show()
             }
-
         })
     }
+
+    private fun loadImage(cat : List<Cat>?){
+        Glide.with(this)
+            .load(cat?.get(0)?.url)
+            .transition(DrawableTransitionOptions().crossFade())
+            .into(binding.randomCatImg)
+    }
+
 }

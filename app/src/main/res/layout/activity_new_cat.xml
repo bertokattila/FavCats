@@ -6,11 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".activities.NewCatActivity">
 
-    <Button
-        android:id="@+id/button"
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/newCatBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="361dp" />
+        android:layout_marginTop="28dp"
+        android:text="@string/show_new_random_cat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
+    <ImageView
+        android:id="@+id/randomCatImg"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newCatBtn" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/saveCatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Add to favorites"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomCatImg">
+
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,6 @@
     <string name="favorite_cats">Favorite cats</string>
     <string name="random_royalty_free_cat">random royalty free cat</string>
     <string name="new_cat">New cat</string>
+    <string name="button">Button</string>
+    <string name="show_new_random_cat">Show new random cat</string>
 </resources>
