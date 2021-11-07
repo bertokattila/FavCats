@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MenuActivity"
+    android:weightSum="2"
+    android:orientation="vertical"
+ >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/openFavCatsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/bandi_cat"
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bandi_sq" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#66000000"
+            android:text="@string/favorite_cats"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="@+id/openFavCatsBtn"
+            app:layout_constraintEnd_toEndOf="@+id/openFavCatsBtn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/openFavCatsBtn"
+            app:layout_constraintTop_toTopOf="@+id/openFavCatsBtn"
+            app:layout_constraintVertical_bias="0.0">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ImageButton
+            android:id="@+id/openRandCatsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/random_royalty_free_cat"
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/randcat_sq" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#66000000"
+            android:text="@string/new_cat"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="@+id/openRandCatsBtn"
+            app:layout_constraintEnd_toEndOf="@+id/openRandCatsBtn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/openRandCatsBtn"
+            app:layout_constraintTop_toTopOf="@+id/openRandCatsBtn"
+            app:layout_constraintVertical_bias="0.0">
+
+        </TextView>
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

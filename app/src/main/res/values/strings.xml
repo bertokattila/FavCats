@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidCat</string>
+    <string name="bandi_cat">Bandi cat</string>
+    <string name="favorite_cats">Favorite cats</string>
+    <string name="random_royalty_free_cat">random royalty free cat</string>
+    <string name="new_cat">New cat</string>
+</resources>
