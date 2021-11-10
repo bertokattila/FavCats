@@ -6,4 +6,7 @@
     <string name="new_cat">New cat</string>
     <string name="button">Button</string>
     <string name="show_new_random_cat">Show new random cat</string>
+    <string name="cat_image">Cat image</string>
+    <string name="sample_text">Sample text</string>
+    <string name="remove_item">Remove item</string>
 </resources>
