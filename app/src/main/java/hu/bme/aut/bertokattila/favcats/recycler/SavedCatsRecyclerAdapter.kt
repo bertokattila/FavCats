@@ -8,8 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.bertokattila.favcats.R
+import hu.bme.aut.bertokattila.favcats.models.StoredCat
+import android.graphics.BitmapFactory
 
-class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>) :
+import android.graphics.Bitmap
+import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import hu.bme.aut.bertokattila.favcats.db.CatDb
+import hu.bme.aut.bertokattila.favcats.db.StoredCatDao
+import kotlin.concurrent.thread
+
+
+class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>, private val catDao: StoredCatDao, private val activity: AppCompatActivity) :
     RecyclerView.Adapter<SavedCatsRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -17,11 +27,22 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>) :
         val imageView: ImageView = view.findViewById(R.id.cardImage)
         val removeBtn: com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton = view.findViewById(R.id.cardRemoveBtn)
 
-        fun bind(title: String, index: Int) {
+        fun bind(id: String) {
             // Define click listener for the ViewHolder's View.
-            textView.text = title
+            imageView.setImageResource(R.drawable.bandi_sq)
+
             removeBtn.setOnClickListener {
                 removeItem(adapterPosition)
+            }
+            thread {
+                val image = catDao.getImageById(id)
+                val bitmap = BitmapFactory.decodeByteArray(image, 0, image.size)
+                activity.runOnUiThread {
+                    imageView.setImageBitmap(bitmap)
+                    textView.text = id
+                }
+
+
             }
         }
     }
@@ -32,6 +53,7 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>) :
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.cat_card, viewGroup, false)
 
+
         return ViewHolder(view)
     }
 
@@ -40,7 +62,8 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.bind(dataSet[position], position)
+        viewHolder.bind(dataSet[position])
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

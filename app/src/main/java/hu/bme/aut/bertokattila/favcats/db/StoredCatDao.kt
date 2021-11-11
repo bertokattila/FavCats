@@ -14,6 +14,12 @@ interface StoredCatDao {
     @Insert
     fun insertAll(vararg cats: StoredCat?)
 
+    @Query("SELECT id FROM StoredCat")
+    fun getAllIds() : List<String>
+
+    @Query("SELECT image FROM StoredCat WHERE id = :id")
+    fun getImageById(id :String) : ByteArray
+
     @Delete
     fun delete(user: StoredCat)
 }
