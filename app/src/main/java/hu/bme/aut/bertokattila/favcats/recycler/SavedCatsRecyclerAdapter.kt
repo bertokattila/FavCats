@@ -29,7 +29,7 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>, private v
 
         fun bind(id: String) {
             // Define click listener for the ViewHolder's View.
-            imageView.setImageResource(R.drawable.bandi_sq)
+            imageView.setImageResource(R.drawable.loading_white)
 
             removeBtn.setOnClickListener {
                 removeItem(adapterPosition, id)

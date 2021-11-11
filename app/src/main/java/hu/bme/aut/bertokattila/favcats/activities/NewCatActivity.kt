@@ -9,6 +9,7 @@ import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import hu.bme.aut.bertokattila.favcats.R
 import hu.bme.aut.bertokattila.favcats.api.HttpClient
 import hu.bme.aut.bertokattila.favcats.databinding.ActivityNewCatBinding
 import hu.bme.aut.bertokattila.favcats.db.CatDb
@@ -29,7 +30,8 @@ class NewCatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewCatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.randomCatImg.setImageResource(R.drawable.loading_white)
+        binding.saveCatBtn.isEnabled = false
         loadRandomCat()
         binding.newCatBtn.setOnClickListener {
             loadRandomCat()
@@ -67,6 +69,7 @@ class NewCatActivity : AppCompatActivity() {
                     bmp.compress(Bitmap.CompressFormat.JPEG, 20, stream)
                     val image = stream.toByteArray()
                     loadedCat =StoredCat(cat?.get(0)?.id.toString(), cat?.get(0)?.id.toString(), image)
+                    binding.saveCatBtn.isEnabled = true
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {
