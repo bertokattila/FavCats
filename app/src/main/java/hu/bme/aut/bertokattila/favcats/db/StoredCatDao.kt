@@ -21,5 +21,8 @@ interface StoredCatDao {
     fun getImageById(id :String) : ByteArray
 
     @Delete
-    fun delete(user: StoredCat)
+    fun delete(cat: StoredCat)
+
+    @Query("DELETE FROM storedcat WHERE id = :id")
+    fun deleteById(id : String)
 }

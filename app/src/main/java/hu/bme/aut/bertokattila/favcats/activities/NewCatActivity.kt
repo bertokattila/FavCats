@@ -64,7 +64,7 @@ class NewCatActivity : AppCompatActivity() {
                 override fun onResourceReady(bmp: Bitmap, transition: Transition<in Bitmap>?) {
                     binding.randomCatImg.setImageBitmap(bmp)
                     val stream = ByteArrayOutputStream()
-                    bmp.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+                    bmp.compress(Bitmap.CompressFormat.JPEG, 20, stream)
                     val image = stream.toByteArray()
                     loadedCat =StoredCat(cat?.get(0)?.id.toString(), cat?.get(0)?.id.toString(), image)
                 }

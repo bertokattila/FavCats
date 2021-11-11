@@ -32,7 +32,7 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>, private v
             imageView.setImageResource(R.drawable.bandi_sq)
 
             removeBtn.setOnClickListener {
-                removeItem(adapterPosition)
+                removeItem(adapterPosition, id)
             }
             thread {
                 val image = catDao.getImageById(id)
@@ -41,8 +41,6 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>, private v
                     imageView.setImageBitmap(bitmap)
                     textView.text = id
                 }
-
-
             }
         }
     }
@@ -69,9 +67,10 @@ class SavedCatsRecyclerAdapter(private val dataSet: ArrayList<String>, private v
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
 
-    fun removeItem(item : Int){
+    fun removeItem(item : Int, itemId: String){
         dataSet.removeAt(item)
         notifyItemRemoved(item)
+        thread { catDao.deleteById(itemId) }
     }
 
 }

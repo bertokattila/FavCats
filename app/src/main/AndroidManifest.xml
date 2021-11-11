@@ -13,12 +13,15 @@
         android:theme="@style/Theme.AndroidCat">
         <activity
             android:name=".activities.FavoriteCatsActivity"
+            android:label="Favorite Cats"
             android:exported="true" />
         <activity
             android:name=".activities.NewCatActivity"
+            android:label="New Cat"
             android:exported="true" />
         <activity
             android:name=".activities.MenuActivity"
+            android:label="FavCats Main Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
